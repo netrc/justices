@@ -113,10 +113,11 @@ function initPage(){
 
         Parray.map(function(p) {
             timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
+			pc[p.n] = pc[p.p];
         });
 
         Jarray.map(function(j) {
-            timeline_json.events.push( { 'text':{'text':j.n,'headline':j.n}, 'start_date':strDateParse(j.s), 'end_date':strDateParse(j.e), 'group':j.seat } );
+            timeline_json.events.push( { 'text':{'text':j.n,'headline':j.n}, 'start_date':strDateParse(j.s), 'end_date':strDateParse(j.e), 'group':j.seat, 'background':{'color': pc[j.np]} } );
         });
 
         window.timeline = new TL.Timeline('timeline-embed', timeline_json);
