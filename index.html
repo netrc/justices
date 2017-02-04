@@ -307,6 +307,10 @@ function initPage(){
         'eras': []
     };
 
+    $.get("https://netrc.github.io/justices/presidents.json", function presGetOK( p ) { 
+		console.log("presGetOK: "+p.length);
+	} );
+
     presidents.map(function(p) {
         timeline_json.eras.push( { 'text':{'text':p[0],'headline':p[0]}, 'start_date':strDateParse(p[1]), 'end_date':strDateParse(p[2]) } );
     });
