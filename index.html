@@ -308,6 +308,7 @@ function initPage(){
     };
 
     var PRESJSONURL = "https://netrc.github.io/justices/presidents.json";
+	var Parray;
     $.ajax( {
 		url: PRESJSONURL, 
 		type: "GET",
@@ -315,14 +316,15 @@ function initPage(){
 		async: "false",
 		success: function presGetOK( p ) { 
 			console.log("presGetOK: "+p.length);
+			Parray = p;
 		},
 		error: function presGetError( o, e, f ) {
 			console.log("presGetError: ");
 		}
     } );
 
-    presidents.map(function(p) {
-        timeline_json.eras.push( { 'text':{'text':p[0],'headline':p[0]}, 'start_date':strDateParse(p[1]), 'end_date':strDateParse(p[2]) } );
+    Parray.map(function(p) {
+        timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
     });
     justiceSeats.map(function(js) {
         // js[0] = e.g. "CJ"
