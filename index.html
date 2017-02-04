@@ -308,7 +308,9 @@ function initPage(){
     };
 
 console.log("presGetOK: calling");
-    $.get("https://netrc.github.io/justices/presidents.json", null, function presGetOK( p ) { 
+    $.get("https://netrc.github.io/justices/presidents.json", null, function presGetOK( pjs ) { 
+		console.log("presGetOK: cb");
+		var p = JSON.parse(pjs);
 		console.log("presGetOK: "+p.length);
 	}, "json" );
 
