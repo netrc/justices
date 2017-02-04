@@ -318,7 +318,7 @@ console.log("presGetOK: calling");
 			var p = JSON.parse(pjson);
 			console.log("presGetOK: "+p.length);
 		},
-		error: function presGetError( ) {
+		error: function presGetError( o, e, f ) {
 			console.log("presGetError: ");
 		}
     } );
