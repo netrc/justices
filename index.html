@@ -307,6 +307,7 @@ function initPage(){
         'eras': []
     };
 
+console.log("presGetOK: calling");
     $.get("https://netrc.github.io/justices/presidents.json", null, function presGetOK( p ) { 
 		console.log("presGetOK: "+p.length);
 	}, "json" );
