@@ -264,31 +264,32 @@ function initPage(){
     var PRESJSONURL = HOMEURL + "presidents.json";
     var JUSJSONURL = HOMEURL + "justices.json";
 	var Parray, Jarray;
-    $.ajax( {
-		url: PRESJSONURL, 
-		type: "GET",
-		dataType: "json",
-		success: function presGetOK( p ) { 
-			console.log("presGetOK: "+p.length);
-			Parray = p;
-		},
-		error: function presGetError( o, e, f ) {
-			console.log("presGetError: ");
-		}
-    } ).then(function(){
-		$.ajax( {
-		    url: JUSJSONURL, 
-		    type: "GET",
-		    dataType: "json",
-		    success: function presGetOK( j ) { 
-			    console.log("jusGetOK: "+j.justices.length);
-			    Jarray = j.justices;
-		    },
-		    error: function presGetError( o, e, f ) {
-			    console.log("presGetError: ");
-		    }
-       });
-    } ).then(function(){
+	$.when(				// do all these ajax calls, and then....
+			$.ajax( {
+				url: PRESJSONURL, 
+				type: "GET",
+				dataType: "json",
+				success: function presGetOK( p ) { 
+					console.log("presGetOK: "+p.length);
+					Parray = p;
+				},
+				error: function presGetError( o, e, f ) {
+					console.log("presGetError: ");
+				}
+			} ),
+			$.ajax( {
+					url: JUSJSONURL, 
+					type: "GET",
+					dataType: "json",
+					success: function presGetOK( j ) { 
+						console.log("jusGetOK: "+j.justices.length);
+						Jarray = j.justices;
+					},
+					error: function presGetError( o, e, f ) {
+						console.log("presGetError: ");
+					}
+			} )
+    ).done(function(){		// after all are done, do this....
 
         Parray.map(function(p) {
             timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
