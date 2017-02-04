@@ -307,15 +307,13 @@ function initPage(){
         'eras': []
     };
 
-console.log("presGetOK: calling");
     var PRESJSONURL = "https://netrc.github.io/justices/presidents.json";
     $.ajax( {
 		url: PRESJSONURL, 
 		type: "GET",
 		dataType: "json",
-		success: function presGetOK( pjson ) { 
-			console.log("presGetOK: cb");
-			var p = JSON.parse(pjson);
+		async: "false",
+		success: function presGetOK( p ) { 
 			console.log("presGetOK: "+p.length);
 		},
 		error: function presGetError( o, e, f ) {
