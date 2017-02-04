@@ -308,11 +308,20 @@ function initPage(){
     };
 
 console.log("presGetOK: calling");
-    $.get("https://netrc.github.io/justices/presidents.json", null, function presGetOK( pjs ) { 
-		console.log("presGetOK: cb");
-		var p = JSON.parse(pjs);
-		console.log("presGetOK: "+p.length);
-	}, "json" );
+    var PRESJSONURL = "https://netrc.github.io/justices/presidents.json";
+    $.ajax( {
+		url: PRESJSONURL, 
+		type: "GET",
+		dataType: "json",
+		success: function presGetOK( pjson ) { 
+			console.log("presGetOK: cb");
+			var p = JSON.parse(pjson);
+			console.log("presGetOK: "+p.length);
+		},
+		error: function presGetError( ) {
+			console.log("presGetError: ");
+		}
+    } );
 
     presidents.map(function(p) {
         timeline_json.eras.push( { 'text':{'text':p[0],'headline':p[0]}, 'start_date':strDateParse(p[1]), 'end_date':strDateParse(p[2]) } );
