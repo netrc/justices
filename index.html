@@ -260,8 +260,10 @@ function initPage(){
         'eras': []
     };
 
-    var PRESJSONURL = "https://netrc.github.io/justices/presidents.json";
-	var Parray;
+    var HOMEURL = "https://netrc.github.io/justices/"
+    var PRESJSONURL = HOMEURL + "presidents.json";
+    var JUSJSONURL = HOMEURL + "justices.json";
+	var Parray, Jarray;
     $.ajax( {
 		url: PRESJSONURL, 
 		type: "GET",
@@ -274,18 +276,30 @@ function initPage(){
 			console.log("presGetError: ");
 		}
     } ).then(function(){
+		$.ajax( {
+		    url: JUSJSONURL, 
+		    type: "GET",
+		    dataType: "json",
+		    success: function presGetOK( j ) { 
+			    console.log("jusGetOK: "+j.justices.length);
+			    Jarray = j.justices;
+		    },
+		    error: function presGetError( o, e, f ) {
+			    console.log("presGetError: ");
+		    }
+       });
+    } ).then(function(){
 
-    Parray.map(function(p) {
-        timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
-    });
-    justiceSeats.map(function(js) {
-        // js[0] = e.g. "CJ"
-        js[2].map(function(j) {
-            timeline_json.events.push( { 'text':{'text':j[0],'headline':j[0]}, 'start_date':engDateParse(j[1]), 'end_date':engDateParse(j[2]), 'group':js[0] } );
+        Parray.map(function(p) {
+            timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
         });
-    });
-    window.timeline = new TL.Timeline('timeline-embed', timeline_json);
-
+        justiceSeats.map(function(js) {
+            // js[0] = e.g. "CJ"
+            js[2].map(function(j) {
+                timeline_json.events.push( { 'text':{'text':j[0],'headline':j[0]}, 'start_date':engDateParse(j[1]), 'end_date':engDateParse(j[2]), 'group':js[0] } );
+            });
+        });
+        window.timeline = new TL.Timeline('timeline-embed', timeline_json);
 	});
 }
 </script>
