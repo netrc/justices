@@ -293,12 +293,17 @@ function initPage(){
         Parray.map(function(p) {
             timeline_json.eras.push( { 'text':{'text':p.n,'headline':p.n}, 'start_date':strDateParse(p.s), 'end_date':strDateParse(p.e) } );
         });
-        justiceSeats.map(function(js) {
-            // js[0] = e.g. "CJ"
-            js[2].map(function(j) {
-                timeline_json.events.push( { 'text':{'text':j[0],'headline':j[0]}, 'start_date':engDateParse(j[1]), 'end_date':engDateParse(j[2]), 'group':js[0] } );
-            });
+
+        Jarray.map(function(j) {
+            timeline_json.events.push( { 'text':{'text':j.n,'headline':j.n}, 'start_date':strDateParse(j.s), 'end_date':strDateParse(j.e), 'group':j.seat } );
         });
+
+//        justiceSeats.map(function(js) {
+ //           // js[0] = e.g. "CJ"
+  //          js[2].map(function(j) {
+   //             timeline_json.events.push( { 'text':{'text':j[0],'headline':j[0]}, 'start_date':engDateParse(j[1]), 'end_date':engDateParse(j[2]), 'group':js[0] } );
+    //        });
+    //    });
         window.timeline = new TL.Timeline('timeline-embed', timeline_json);
 	});
 }
