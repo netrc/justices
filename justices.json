@@ -131,7 +131,8 @@
 		{"seat":"AJ 9","n":"Harlan (II)","s":"1955-3-28","e":"1971-9-23","np":"Dwight D. Eisenhower"},
 		{"seat":"AJ 9","n":"Rehnquist","s":"1972-1-7","e":"1986-9-26","np":"Richard Nixon"},
 		{"seat":"AJ 9","n":"Scalia","s":"1986-9-26","e":"2016-2-13","np":"Ronald Reagan"},
-
+		{"seat":"AJ 9","n":"Gorsuch","s":"2017-04-10","e":"present","np":"Donald Trump"},
+	 
 		{"seat":"AJ 10","n":"Bradley","s":"1870-3-23","e":"1892-1-22","np":"Ulysses S. Grant"},
 		{"seat":"AJ 10","n":"Shiras","s":"1892-10-10","e":"1903-2-23","np":"Benjamin Harrison"},
 		{"seat":"AJ 10","n":"Day","s":"1903-3-2","e":"1922-11-13","np":"Theodore Roosevelt"},
