@@ -88,5 +88,7 @@
   { "n":"Barack Obama",
 		"s":"2009-01-20", "e":"2017-01-20", "p":"Democratic" },
   { "n":"Donald Trump",
-		"s":"2017-01-20", "e":"present", "p":"Republican" }
+		"s":"2017-01-20", "e":"2021-01-20", "p":"Republican" },
+  { "n":"Joe Biden",
+		"s":"2021-01-20", "e":"present", "p":"Democrat" }
 ]
