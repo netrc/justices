@@ -1,5 +1,5 @@
 [ 
-  { "n":"George Washington",
+  { "n":"George Washington", "num":1,
 		"s":"1789-04-30", "e":"1797-03-04", "p":"No Party" },
   { "n":"John Adams",
 		"s":"1797-03-04", "e":"1801-03-04", "p":"Federalist" },
@@ -90,5 +90,7 @@
   { "n":"Donald Trump",
 		"s":"2017-01-20", "e":"2021-01-20", "p":"Republican" },
   { "n":"Joe Biden",
-		"s":"2021-01-20", "e":"present", "p":"Democrat" }
+		"s":"2021-01-20", "e":"2025-01-20", "p":"Democrat" },
+  { "n":"Donald Trump",
+		"s":"2025-01-20", "e":"present", "p":"Democrat" }
 ]
