@@ -57,9 +57,10 @@ var pc = {
 function strDateParse ( sd ) {
     var year, month, day;
     if (sd == "present") {
-        year = 2017;
-        month = 1;
-        day = 30;
+		const d = new Date();
+        year = d.getFullYear;
+        month = d.getMonth();
+        day = d.getDate();
     } else {
         year = parseInt(sd.substring(0,4));
         month = parseInt(sd.substring(5,7));
